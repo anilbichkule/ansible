@@ -1,0 +1,14 @@
+--- #first Playbook
+- hosts: devlinux
+  user: ansible
+  become: yes
+  connection: ssh
+  gather_facts: yes
+
+  tasks:
+    - name: httpd stop
+      action: service name=httpd state=stopped
+
+    - name: httpd remove
+      action: yum pkg=httpd state=absent
+

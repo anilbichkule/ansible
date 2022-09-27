@@ -1,0 +1,16 @@
+--- #putting conditions
+- hosts: devlinux
+  user: ansible
+  become: yes
+  connection: ssh
+  gather_facts: yes
+
+
+  vars:
+    value: 10
+
+  tasks:
+    - name: install tree
+      command: yum install tree -y
+      when: value==10
+

@@ -1,0 +1,15 @@
+--- #Loops
+- hosts: devlinux
+  user: ansible
+  become: yes
+  connection: ssh
+  gather_facts: yes
+
+  tasks:
+    - name: add user
+      user: name="{{item}}" state=absent
+      loop:
+        - "apurva"
+        - "adika"
+        - "anil"
+

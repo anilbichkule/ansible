@@ -1,0 +1,17 @@
+--- #multi-tasks
+- hosts: devlinux
+  user: ansible
+  become: yes
+  connection: ssh
+  gather_facts: yes
+
+
+  tasks:
+    - name: httpd install
+      action: yum pkg=httpd state=present
+
+    - name: service start
+      action: service name=httpd state=started
+
+    - name: index copy
+      action: copy src=index.html dest=/var/www/html
