@@ -1,0 +1,5 @@
+- name: install httpd
+  action: yum pkg="{{pkgname}}" state=present
+  notify:
+    - start
+    - copy

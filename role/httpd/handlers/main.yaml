@@ -1,0 +1,5 @@
+- name: start
+  action: service name="{{pkgname}}" state=started
+
+- name: copy
+  action: copy src=/home/ansible/playbook/index.html dest=/var/www/html
