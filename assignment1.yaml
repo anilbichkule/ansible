@@ -8,17 +8,17 @@
     - name: httpd install
       action: yum pkg=httpd state=present
 
-   - git:
-     repo: https://github.com/anilbichkule/ansible.git
-     dest: /home/ansible
-     version: dev
+    - name: git clone
+      git:
+       repo: https://github.com/anilbichkule/ansible.git
+       dest: /home/ansible
+       version: dev
  
-   tasks:
-    - name: copy index
-      action: copy src=/home/ansible/Vel-Assignment/index.html dest=/var/www/html
+   - name: copy index
+     action: copy src=/home/ansible/Vel-Assignment/index.html dest=/var/www/html
 
-    - name: httpd restsrt
-      action: service name=httpd state=restarted
+   - name: httpd restsrt
+     action: service name=httpd state=restarted
 
 - hosts: devlinux[1]
   user: ansible
@@ -30,13 +30,12 @@
     - name: httpd install
       action: yum pkg=httpd state=present
 
-    - git:
-     repo: https://github.com/anilbichkule/ansible.git
-     dest: /home/ansible
-     version: qa
+    - name: git clone
+      git:
+       repo: https://github.com/anilbichkule/ansible.git
+       dest: /home/ansible
+       version: dev
 
-
-   tasks:
     - name: git clone
       action: git repo=clone https://github.com/anilbichkule/Vel-Assignment.git dest/home/ansible version=qa
 
