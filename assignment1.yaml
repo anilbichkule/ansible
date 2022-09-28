@@ -1,0 +1,38 @@
+--- #deployind index on both slaves
+- hosts: devlinux[0]
+  user: ansible
+  become: yes
+  connection: ssh
+  gather_facts: yes
+
+  tasks:
+    - name: httpd install
+      action: yum pkg=httpd state=present
+
+    - name: git clone
+      command: git clone https://github.com/anilbichkule/Vel-Assignment.git -b dev
+
+    - name: copy index
+      action: copy src=/Vel-Assignment/index.html dest=/var/www/html
+
+    - name: httpd restsrt
+      action: service name=httpd state=restarted
+
+- hosts: devlinux[1]
+  user: ansible
+  become: yes
+  connection: ssh
+  gather_facts: yes
+
+  tasks:
+    - name: httpd install
+      action: yum pkg=httpd state=present
+
+    - name: git clone
+      command: git clone https://github.com/anilbichkule/Vel-Assignment.git -b qa
+
+    - name: copy index
+      action: copy src=/Vel-Assignment/index.html dest=/var/www/html
+
+    - name: httpd restsrt
+      action: service name=httpd state=restarted
