@@ -7,18 +7,17 @@
   tasks:
     - name: httpd install
       action: yum pkg=httpd state=present
-
     - name: git clone
       git:
        repo: https://github.com/anilbichkule/ansible.git
        dest: /home/ansible
        version: dev
- 
-   - name: copy index
-     action: copy src=/home/ansible/Vel-Assignment/index.html dest=/var/www/html
 
-   - name: httpd restsrt
-     action: service name=httpd state=restarted
+    - name: copy index
+      action: copy src=/home/ansible/Vel-Assignment/index.html dest=/var/www/html
+
+    - name: httpd restsrt
+      action: service name=httpd state=restarted
 
 - hosts: devlinux[1]
   user: ansible
