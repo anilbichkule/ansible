@@ -1,4 +1,3 @@
---- #deployind index on both slaves
 - hosts: devlinux[0]
   user: ansible
   become: yes
@@ -9,9 +8,12 @@
     - name: httpd install
       action: yum pkg=httpd state=present
 
-    - name: git clone
-      action: git repo=clone https://github.com/anilbichkule/Vel-Assignment.git dest=/home/ansible version=dev
+ - git:
+   repo: https://github.com/anilbichkule/ansible.git
+   dest: /home/ansible
+   version: dev
 
+   tasks:
     - name: copy index
       action: copy src=/home/ansible/Vel-Assignment/index.html dest=/var/www/html
 
@@ -28,6 +30,13 @@
     - name: httpd install
       action: yum pkg=httpd state=present
 
+  - git:
+   repo: https://github.com/anilbichkule/ansible.git
+   dest: /home/ansible
+   version: qa
+
+
+   tasks:
     - name: git clone
       action: git repo=clone https://github.com/anilbichkule/Vel-Assignment.git dest/home/ansible version=qa
 
