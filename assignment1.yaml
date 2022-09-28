@@ -10,7 +10,7 @@
       action: yum pkg=httpd state=present
 
     - name: git clone
-      command: git clone https://github.com/anilbichkule/Vel-Assignment.git -b dev
+      action: git repo=clone https://github.com/anilbichkule/Vel-Assignment.git dest=/home/ansible version=dev
 
     - name: copy index
       action: copy src=/Vel-Assignment/index.html dest=/var/www/html
@@ -29,7 +29,7 @@
       action: yum pkg=httpd state=present
 
     - name: git clone
-      command: git clone https://github.com/anilbichkule/Vel-Assignment.git -b qa
+      action: git repo=clone https://github.com/anilbichkule/Vel-Assignment.git dest/home/ansible version=qa
 
     - name: copy index
       action: copy src=/Vel-Assignment/index.html dest=/var/www/html
