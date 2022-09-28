@@ -8,11 +8,11 @@
     - name: httpd install
       action: yum pkg=httpd state=present
 
- - git:
-   repo: https://github.com/anilbichkule/ansible.git
-   dest: /home/ansible
-   version: dev
-
+   - git:
+     repo: https://github.com/anilbichkule/ansible.git
+     dest: /home/ansible
+     version: dev
+ 
    tasks:
     - name: copy index
       action: copy src=/home/ansible/Vel-Assignment/index.html dest=/var/www/html
@@ -30,10 +30,10 @@
     - name: httpd install
       action: yum pkg=httpd state=present
 
-  - git:
-   repo: https://github.com/anilbichkule/ansible.git
-   dest: /home/ansible
-   version: qa
+    - git:
+     repo: https://github.com/anilbichkule/ansible.git
+     dest: /home/ansible
+     version: qa
 
 
    tasks:
