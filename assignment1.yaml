@@ -13,7 +13,7 @@
       action: git repo=clone https://github.com/anilbichkule/Vel-Assignment.git dest=/home/ansible version=dev
 
     - name: copy index
-      action: copy src=/Vel-Assignment/index.html dest=/var/www/html
+      action: copy src=/home/ansible/Vel-Assignment/index.html dest=/var/www/html
 
     - name: httpd restsrt
       action: service name=httpd state=restarted
@@ -32,7 +32,7 @@
       action: git repo=clone https://github.com/anilbichkule/Vel-Assignment.git dest/home/ansible version=qa
 
     - name: copy index
-      action: copy src=/Vel-Assignment/index.html dest=/var/www/html
+      action: copy src=/home/ansible/Vel-Assignment/index.html dest=/var/www/html
 
     - name: httpd restsrt
       action: service name=httpd state=restarted
