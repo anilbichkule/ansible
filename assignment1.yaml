@@ -5,11 +5,20 @@
   gather_facts: yes
 
   tasks:
+    - name: git install
+      action: yum pkg=git state=present
+
     - name: httpd install
       action: yum pkg=httpd state=present
 
+    - name: git clone
+      ansible.builtin.git:
+        repo: https://github.com/anilbichkule/Vel-Assignment.git
+        dest: /mnt/ansible
+        version: dev
+
     - name: copy index
-      action: copy src=/home/ansible/Vel-Assignment/index.html dest=/var/www/html
+      action: copy src=/mnt/ansible/index.html dest=/var/www/html remote_src=yes
 
     - name: httpd restsrt
       action: service name=httpd state=restarted
@@ -21,14 +30,20 @@
   gather_facts: yes
 
   tasks:
+    - name: git install
+      action: yum pkg=git state=present
+
     - name: httpd install
       action: yum pkg=httpd state=present
 
     - name: git clone
-      action: git repo=clone https://github.com/anilbichkule/Vel-Assignment.git dest/home/ansible version=qa
+      ansible.builtin.git:
+        repo: https://github.com/anilbichkule/Vel-Assignment.git
+        dest: /mnt/ansible
+        version: qa
 
     - name: copy index
-      action: copy src=/home/ansible/Vel-Assignment/index.html dest=/var/www/html
+      action: copy src=/mnt/ansible/index.html dest=/var/www/html remote_src=yes
 
     - name: httpd restsrt
       action: service name=httpd state=restarted
